@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>cz.vookimedlo.alfred.ffprobe</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>694A416E-1A0B-4497-B80B-ED73456F452B</key>
+		<array/>
+		<key>C82DC865-0F62-4163-B87A-1F88D599B161</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>694A416E-1A0B-4497-B80B-ED73456F452B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Michal Duda</string>
+	<key>description</key>
+	<string>Displays information about media files.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>FFProbe</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>111</integer>
+				<key>script</key>
+				<string>output=`/usr/local/bin/ffprobe -hide_banner {query} 2&gt;&amp;1 `
+tmpfile=$(mktemp "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
+
+echo "&lt;html&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;&lt;body&gt;" &gt; "$tmpfile"
+echo "&lt;pre&gt;$output&lt;/pre&gt;" &gt;&gt; "$tmpfile"
+echo "&lt;/body&gt;&lt;/html&gt;" &gt;&gt; "$tmpfile"
+
+automator -i "file://$tmpfile" popup.wflow</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>694A416E-1A0B-4497-B80B-ED73456F452B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<false/>
+				<key>filetypes</key>
+				<array>
+					<string>com.adobe.flash.video</string>
+					<string>com.microsoft.windows-media-wmv</string>
+					<string>io.mpv.mkv</string>
+					<string>public.avi</string>
+					<string>public.mpeg</string>
+					<string>public.mpeg-2-transport-stream</string>
+					<string>public.mpeg-4</string>
+				</array>
+				<key>name</key>
+				<string>Analyze media file</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>C82DC865-0F62-4163-B87A-1F88D599B161</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>694A416E-1A0B-4497-B80B-ED73456F452B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>350</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+		<key>C82DC865-0F62-4163-B87A-1F88D599B161</key>
+		<dict>
+			<key>xpos</key>
+			<integer>130</integer>
+			<key>ypos</key>
+			<integer>60</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/vookimedlo/alfred-ffprobe</string>
+</dict>
+</plist>
