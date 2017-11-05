@@ -6,8 +6,8 @@
 
 1) Install the [ffprobe][2] to you MacOS.
 
-   You could do it for example by using [Homebrew][3] and installing [ffmpeg package.][4]
-   ````brew install ffmpeg````
+   - You could do it for example by using [Homebrew][3] and installing [ffmpeg package.][4]
+   - ````brew install ffmpeg````
 2) Install [alfred-ffprobe wokflow.][5]
 
 ## Usage
