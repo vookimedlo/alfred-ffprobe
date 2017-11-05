@@ -12,7 +12,7 @@
 
 ## Usage
 
-Select a video file in finder and invoke the alfred file actions <kbd>⌃﻿⌘\</kbd>.
+Select a video file in finder and invoke the alfred file actions <kbd>⌃﻿⌘\\</kbd>.
 
 ![Alfred actions screenshot](doc/images/alfred-actions.png?raw=true "")
 
