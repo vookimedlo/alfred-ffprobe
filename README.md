@@ -20,6 +20,16 @@ Choose the `Analyze media file` in displayed menu and the information about sele
 
 ![alfred-ffprobe results screenshot](doc/images/alfred-ffprobe-results.png?raw=true "")
 
+-------------------
+
+From time to time, full results could be annoying, so there is another option just showing the results describing inner streams `Analyze media file (stream)`.
+
+![Alfred actions screenshot](doc/images/alfred-actions-streams.png?raw=true "")
+
+Output is much more well-aranged.
+
+![alfred-ffprobe results screenshot](doc/images/alfred-ffprobe-results-streams.png?raw=true "")
+
 [1]: https://www.alfredapp.com/
 [2]: https://ffmpeg.org/ffprobe.html
 [3]: https://brew.sh/
