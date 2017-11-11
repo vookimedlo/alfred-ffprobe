@@ -26,7 +26,7 @@ From time to time, full results could be annoying, so there is another option ju
 
 ![Alfred actions screenshot](doc/images/alfred-actions-streams.png?raw=true "")
 
-Output is much more well-aranged.
+Output is much more well-arranged.
 
 ![alfred-ffprobe results screenshot](doc/images/alfred-ffprobe-results-streams.png?raw=true "")
 
