@@ -236,7 +236,7 @@ automator -i "file://$tmpfile" popup.wflow</string>
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>2017.11.XX</string>
+	<string>2017.11.11</string>
 	<key>webaddress</key>
 	<string>https://github.com/vookimedlo/alfred-ffprobe</string>
 </dict>
