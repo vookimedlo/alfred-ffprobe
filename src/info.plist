@@ -8,13 +8,52 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>694A416E-1A0B-4497-B80B-ED73456F452B</key>
-		<array/>
-		<key>C82DC865-0F62-4163-B87A-1F88D599B161</key>
+		<key>655EBCA4-39FE-40AE-A4E1-79EA1B0414E1</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>694A416E-1A0B-4497-B80B-ED73456F452B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>694A416E-1A0B-4497-B80B-ED73456F452B</key>
+		<array/>
+		<key>76A2BC59-FB7C-4191-9646-883E3828D057</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>694A416E-1A0B-4497-B80B-ED73456F452B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B720F5E5-06CA-4D68-930F-FD96130E44DB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>655EBCA4-39FE-40AE-A4E1-79EA1B0414E1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C82DC865-0F62-4163-B87A-1F88D599B161</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>76A2BC59-FB7C-4191-9646-883E3828D057</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -37,12 +76,57 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>acceptsmulti</key>
+				<false/>
+				<key>filetypes</key>
+				<array>
+					<string>+public.movie</string>
+					<string>+public.video</string>
+				</array>
+				<key>name</key>
+				<string>Analyze media file</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>C82DC865-0F62-4163-B87A-1F88D599B161</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>juststreams</key>
+					<string>false</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>76A2BC59-FB7C-4191-9646-883E3828D057</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
 				<integer>111</integer>
 				<key>script</key>
-				<string>output=`/usr/local/bin/ffprobe -hide_banner {query} 2&gt;&amp;1 `
+				<string>justStreams=${juststreams}
+
+if [ $juststreams = "false" ]; then
+	output=`/usr/local/bin/ffprobe -hide_banner {query} 2&gt;&amp;1`
+else
+	output=`/usr/local/bin/ffprobe -hide_banner {query} 2&gt;&amp;1 | egrep 'Stream|Input #0'`
+fi
+
 tmpfile=$(mktemp "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
 
 echo "&lt;html&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;&lt;body&gt;" &gt; "$tmpfile"
@@ -67,48 +151,92 @@ automator -i "file://$tmpfile" popup.wflow</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>juststreams</key>
+					<string>true</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>655EBCA4-39FE-40AE-A4E1-79EA1B0414E1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>acceptsmulti</key>
 				<false/>
 				<key>filetypes</key>
 				<array>
-					<string>com.adobe.flash.video</string>
-					<string>com.microsoft.windows-media-wmv</string>
-					<string>io.mpv.mkv</string>
-					<string>public.avi</string>
-					<string>public.mpeg</string>
-					<string>public.mpeg-2-transport-stream</string>
-					<string>public.mpeg-4</string>
+					<string>+public.movie</string>
+					<string>+public.video</string>
 				</array>
 				<key>name</key>
-				<string>Analyze media file</string>
+				<string>Analyze media file (streams only)</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.action</string>
 			<key>uid</key>
-			<string>C82DC865-0F62-4163-B87A-1F88D599B161</string>
+			<string>B720F5E5-06CA-4D68-930F-FD96130E44DB</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>For installation instructions visit https://github.com/vookimedlo/alfred-ffprobe</string>
 	<key>uidata</key>
 	<dict>
+		<key>655EBCA4-39FE-40AE-A4E1-79EA1B0414E1</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>10</integer>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>230</integer>
+		</dict>
 		<key>694A416E-1A0B-4497-B80B-ED73456F452B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>350</integer>
+			<integer>520</integer>
 			<key>ypos</key>
-			<integer>60</integer>
+			<integer>140</integer>
+		</dict>
+		<key>76A2BC59-FB7C-4191-9646-883E3828D057</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+		<key>B720F5E5-06CA-4D68-930F-FD96130E44DB</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>10</integer>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>240</integer>
 		</dict>
 		<key>C82DC865-0F62-4163-B87A-1F88D599B161</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
-			<integer>130</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>60</integer>
+			<integer>40</integer>
 		</dict>
 	</dict>
+	<key>version</key>
+	<string>2017.11.XX</string>
 	<key>webaddress</key>
 	<string>https://github.com/vookimedlo/alfred-ffprobe</string>
 </dict>
