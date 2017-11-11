@@ -177,7 +177,7 @@ automator -i "file://$tmpfile" popup.wflow</string>
 					<string>+public.video</string>
 				</array>
 				<key>name</key>
-				<string>Analyze media file (streams only)</string>
+				<string>Analyze media file (streams)</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.action</string>
