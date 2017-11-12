@@ -182,26 +182,6 @@ automator -i "file://$tmpfile" popup.wflow</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>acceptsmulti</key>
-				<false/>
-				<key>filetypes</key>
-				<array>
-					<string>+public.movie</string>
-					<string>+public.video</string>
-				</array>
-				<key>name</key>
-				<string>Analyze media file (streams)</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.action</string>
-			<key>uid</key>
-			<string>B720F5E5-06CA-4D68-930F-FD96130E44DB</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -210,7 +190,7 @@ automator -i "file://$tmpfile" popup.wflow</string>
 				<string>readonly latestTag=`curl -s https://api.github.com/repos/vookimedlo/alfred-ffprobe/releases/latest | grep browser_download_url | grep FFProbe.alfredworkflow | cut -d '/' -f 8`
 
 # THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
-readonly remote_info_plist=`https://raw.githubusercontent.com/vookimedlo/alfred-ffprobe/${latestTag}/src/info.plist`
+readonly remote_info_plist="https://raw.githubusercontent.com/vookimedlo/alfred-ffprobe/${latestTag}/src/info.plist"
 readonly workflow_url=`curl -s https://api.github.com/repos/vookimedlo/alfred-ffprobe/releases/latest | grep browser_download_url | grep FFProbe.alfredworkflow | cut -d '"' -f 4`
 readonly download_type='direct'
 readonly frequency_check='4'
@@ -291,6 +271,26 @@ fi</string>
 			<string>4C409B84-9CDB-499B-A6B1-AB478EACB6C0</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<false/>
+				<key>filetypes</key>
+				<array>
+					<string>+public.movie</string>
+					<string>+public.video</string>
+				</array>
+				<key>name</key>
+				<string>Analyze media file (streams)</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>B720F5E5-06CA-4D68-930F-FD96130E44DB</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
