@@ -9,23 +9,25 @@
    - You could do it for example by using [Homebrew][3] and installing [ffmpeg package.][4]
    - ````brew install ffmpeg````
 2) Install [alfred-ffprobe wokflow.][5]
+3) All further updates are handled automatically.
 
 ## Usage
 
-Select a video file in finder and invoke the alfred file actions <kbd>⌃﻿⌘\\</kbd>.
+Select a video file or more video files in finder and invoke the alfred file actions <kbd>⌃﻿⌘\\</kbd>.
 
 ![Alfred actions screenshot](doc/images/alfred-actions.png?raw=true "")
 
-Choose the `Analyze media file` in displayed menu and the information about selected video will be shown.
+Choose the `Analyze media file...` in displayed menu and select appropriate action.
+
+![Alfred actions submenu screenshot](doc/images/alfred-actions-submenu.png?raw=true "")
+
+Then, the information about selected videos will be shown. The full ffprobe output could be retrieved by selecting the option `Full output`.
 
 ![alfred-ffprobe results screenshot](doc/images/alfred-ffprobe-results.png?raw=true "")
 
 -------------------
 
-From time to time, full results could be annoying, so there is another option just showing the results describing inner streams `Analyze media file (stream)`.
-
-![Alfred actions screenshot](doc/images/alfred-actions-streams.png?raw=true "")
-
+From time to time, full results could be annoying, so there is another option just showing the results describing inner streams. Just select the option `Just streams`.
 Output is much more well-arranged.
 
 ![alfred-ffprobe results screenshot](doc/images/alfred-ffprobe-results-streams.png?raw=true "")
