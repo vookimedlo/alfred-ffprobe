@@ -4,7 +4,7 @@
 
 ## Installation
 
-1) Install the [ffprobe][2] to you MacOS.
+1) Install the [ffprobe][2] to your MacOS.
 
    - You could do it for example by using [Homebrew][3] and installing [ffmpeg package.][4]
    - ````brew install ffmpeg````
