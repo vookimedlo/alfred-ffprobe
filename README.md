@@ -8,7 +8,7 @@
 
    - You could do it for example by using [Homebrew][3] and installing [ffmpeg package.][4]
    - ````brew install ffmpeg````
-2) Install [alfred-ffprobe wokflow.][5]
+2) Install [alfred-ffprobe workflow.][5]
 3) All further updates are handled automatically.
 
 ## Usage
